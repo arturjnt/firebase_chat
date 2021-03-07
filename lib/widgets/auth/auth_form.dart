@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../pickers/user_image_picker.dart';
+
 class AuthForm extends StatefulWidget {
   final void Function(
-      String email,
-      String password,
-      String username,
-      bool isLogin,
-      ) submitFn;
+    String email,
+    String password,
+    String username,
+    bool isLogin,
+  ) submitFn;
 
   final bool isloading;
 
@@ -47,6 +49,7 @@ class _AuthFormState extends State<AuthForm> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                if (!_isLogin) UserImagePicker(),
                 TextFormField(
                   key: ValueKey('email'),
                   validator: (value) {
@@ -92,23 +95,21 @@ class _AuthFormState extends State<AuthForm> {
                 SizedBox(
                   height: 12,
                 ),
-                if (widget.isloading)
-                  CircularProgressIndicator(),
-                if(!widget.isloading)
+                if (widget.isloading) CircularProgressIndicator(),
+                if (!widget.isloading)
                   ElevatedButton(
                       onPressed: _trySubmit,
                       child: Text(_isLogin ? 'Login' : 'Create new account')),
-                if(!widget.isloading)
+                if (!widget.isloading)
                   TextButton(
                     onPressed: () {
                       setState(() {
                         _isLogin = !_isLogin;
                       });
                     },
-                    child: Text(
-                        _isLogin
-                            ? 'Create new account'
-                            : 'Already registered?'),
+                    child: Text(_isLogin
+                        ? 'Create new account'
+                        : 'Already registered?'),
                   ),
               ],
             ),
