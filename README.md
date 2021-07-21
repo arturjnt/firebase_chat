@@ -1,16 +1,14 @@
 # firebase_chat
 
-A new Flutter project.
+An exercise using Flutter + Firebase (Real-Time Database).
+
+Web and Android work fine, iOS couldn't test due to lack of a Mac.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Change the `/android/app/google-services.json` to use your configurations and there you go. Your own chat app that saves all data on the cloud (meaning: your firebase real-time db) just like other companies do 😇
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Generate apk
+```console
+> flutter build apk
+```
